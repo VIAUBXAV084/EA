@@ -1,0 +1,45 @@
+variables:
+  CONTAINER_IMAGE: 'harbor.sch.bme.hu/kszk/szobatarsch'
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+
+  script:
+    - echo "{\"auths\":{\"harbor.sch.bme.hu\":{\"username\":\"$HARBOR_KSZK_USER\",\"password\":\"$HARBOR_KSZK_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "${CONTAINER_IMAGE}:$CI_COMMIT_REF_NAME"
+      --destination "${CONTAINER_IMAGE}:latest"
+  only:
+    - tags
+
+
+deploy:
+  stage: deploy
+  image:
+    name: alpine
+    entrypoint: [ "" ]
+  before_script:
+    - DIR="$PWD"
+    - apk add bash curl gettext
+    - cd /tmp
+    - curl https://get.helm.sh/helm-v3.16.2-linux-amd64.tar.gz | tar xvz
+    - cd /tmp/linux-amd64
+    - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    - chmod +x kubectl
+    - export PATH="$PATH:/tmp/linux-amd64"
+    - cd "$DIR"
+  script:
+    - cd k8s
+    - envsubst < values.yaml | helm upgrade --install szobatarsch . -n kszk-szobatarschv2 --values -
+  only:
+    - tags
+  tags: [k9r]

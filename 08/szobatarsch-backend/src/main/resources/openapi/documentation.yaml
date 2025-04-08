@@ -1,0 +1,1485 @@
+openapi: "3.1.0"
+info:
+  title: "szobatarsch API"
+  description: "szobatarsch API"
+  version: "1.0.0"
+servers:
+- url: "https://szobatarsch"
+paths:
+  /callback:
+    get:
+      description: ""
+      responses:
+        "302":
+          description: "Found <br> Redirect"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "/hello"
+  /login:
+    get:
+      description: ""
+      responses:
+        "302":
+          description: "Found <br> Redirect"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "/callback"
+  /:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "Hello World!"
+  /api/v1/admins:
+    delete:
+      description: ""
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Unit"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/AdminResponse"
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AdminResponse"
+    put:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AdminResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The admin id given is invalid(no such admin)"
+  /api/v1/admins/id/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AdminResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The admin id given is invalid(no such admin exists or format\
+                    \ is incorrect)"
+  /api/v1/admins/isName/{name}:
+    get:
+      description: ""
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "boolean"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "boolean"
+  /api/v1/admins/name/{name}:
+    get:
+      description: ""
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AdminResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "No such admin with the name given"
+  /api/v1/blockedusers:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BlockedUserResponse"
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BlockedUserRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BlockedUserResponse"
+    put:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BlockedUserRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BlockedUserResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The blocked user ID given is invalid"
+  /api/v1/blockedusers/id/{id}:
+    delete:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BlockedUserResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The blocked user ID given is invalid"
+  /api/v1/blockedusers/isBlocked/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "boolean"
+  /api/v1/blockedusers/user/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BlockedUserResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The blocked user ID given is invalid"
+  /api/v1/bros:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BrosResponse"
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BrosRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BrosResponse"
+    put:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BrosRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BrosResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The bro id given is invalid"
+  /api/v1/bros/id/{id}:
+    delete:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BrosResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The bro id given is invalid (no such bro exists or format\
+                    \ is incorrect)"
+  /api/v1/bros/inviter/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BroState"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BrosResponse"
+  /api/v1/bros/target/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BroState"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BrosResponse"
+  /api/v1/contacts:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/ContactInfoResponse"
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInfoRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ContactInfoResponse"
+    put:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInfoRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ContactInfoResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The contactInfo id given is invalid"
+  /api/v1/contacts/id/{id}:
+    delete:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ContactInfoResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The contactInfo id given is invalid (no such contactInfo\
+                    \ exists or format is incorrect)"
+  /api/v1/contacts/user/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/ContactInfoResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The contactInfo id given is invalid (no such contactInfo\
+                    \ exists or format is incorrect)"
+  /api/v1/preferences:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/UserPreferenceResponse"
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserPreferenceRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserPreferenceResponse"
+    put:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserPreferenceRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserPreferenceResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The preference id given is invalid"
+  /api/v1/preferences/id/{id}:
+    delete:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserPreferenceResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The preference id given is invalid (no such preference exists\
+                    \ or format is incorrect)"
+  /api/v1/preferences/user/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserPreferenceResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The preference id given is invalid (no such preference exists\
+                    \ or format is incorrect)"
+  /api/v1/rooms:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/RoomResponse"
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoomRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RoomResponse"
+    put:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoomRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RoomResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The room id given is invalid"
+  /api/v1/rooms/id/{id}:
+    delete:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RoomResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The room id given is invalid (no such room exists or format\
+                    \ is incorrect)"
+  /api/v1/rooms/{user/id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "query"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RoomResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The room id given is invalid (no such room exists or format\
+                    \ is incorrect)"
+  /api/v1/userreports:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/UserReportResponse"
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserReportRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserReportResponse"
+    put:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserReportRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserReportResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The user report ID given is invalid"
+  /api/v1/userreports/id/{id}:
+    delete:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserReportResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The user report ID given is invalid"
+  /api/v1/userreports/user/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserReportResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The user report ID given is invalid"
+  /api/v1/users:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/UserResponse"
+    post:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+    put:
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The user id given is invalid"
+  /api/v1/users/bro/{bro}:
+    get:
+      description: ""
+      parameters:
+      - name: "bro"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/UserResponse"
+  /api/v1/users/id/{id}:
+    delete:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The user id given is invalid (no such user exists or format\
+                    \ is incorrect)"
+  /api/v1/users/room/{room}:
+    get:
+      description: ""
+      parameters:
+      - name: "room"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/UserResponse"
+  /api/v1/users/schacc/{schacc}:
+    get:
+      description: ""
+      parameters:
+      - name: "schacc"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "The user id given is invalid (no such user exists or format\
+                    \ is incorrect)"
+  /healthz:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+  /json/kotlinx-serialization:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Map_String"
+components:
+  schemas:
+    Unit:
+      type: "object"
+      properties: {}
+    RoomResponse:
+      type: "object"
+      properties:
+        roomUUid:
+          type: "string"
+        roomNumber:
+          type: "integer"
+          format: "int32"
+        roomDescription:
+          type: "string"
+        hasLovers:
+          type: "boolean"
+        orientation:
+          type: "string"
+        nickname:
+          type: "string"
+        capacity:
+          type: "integer"
+          format: "int32"
+      required:
+      - "roomUUid"
+      - "roomNumber"
+      - "roomDescription"
+      - "hasLovers"
+      - "orientation"
+      - "nickname"
+      - "capacity"
+    UserResponse:
+      type: "object"
+      properties:
+        userUuid:
+          type: "string"
+        schacc:
+          type: "string"
+        name:
+          type: "string"
+        email:
+          type: "string"
+        room:
+          $ref: "#/components/schemas/RoomResponse"
+        nickname:
+          type: "string"
+        profileDescription:
+          type: "string"
+        gender:
+          type: "string"
+        major:
+          type: "string"
+        wantsCoedRoom:
+          type: "boolean"
+      required:
+      - "userUuid"
+      - "schacc"
+      - "name"
+      - "email"
+      - "nickname"
+      - "profileDescription"
+      - "gender"
+      - "major"
+      - "wantsCoedRoom"
+    AdminResponse:
+      type: "object"
+      properties:
+        adminUuid:
+          type: "string"
+        user:
+          $ref: "#/components/schemas/UserResponse"
+      required:
+      - "adminUuid"
+      - "user"
+    AdminRequest:
+      type: "object"
+      properties:
+        adminUuid:
+          type: "string"
+        userUuid:
+          type: "string"
+      required:
+      - "adminUuid"
+      - "userUuid"
+    UserReportResponse:
+      type: "object"
+      properties:
+        userReportUuid:
+          type: "string"
+        reporterUser:
+          $ref: "#/components/schemas/UserResponse"
+        reportedUser:
+          $ref: "#/components/schemas/UserResponse"
+        reason:
+          type: "string"
+        state:
+          type: "string"
+      required:
+      - "userReportUuid"
+      - "reporterUser"
+      - "reportedUser"
+      - "reason"
+      - "state"
+    BlockedUserResponse:
+      type: "object"
+      properties:
+        blockedUserUuid:
+          type: "string"
+        user:
+          $ref: "#/components/schemas/UserResponse"
+        report:
+          $ref: "#/components/schemas/UserReportResponse"
+      required:
+      - "blockedUserUuid"
+      - "user"
+      - "report"
+    BlockedUserRequest:
+      type: "object"
+      properties:
+        blockedUserUuid:
+          type: "string"
+        userUuid:
+          type: "string"
+        reportUuid:
+          type: "string"
+      required:
+      - "blockedUserUuid"
+      - "userUuid"
+      - "reportUuid"
+    BrosResponse:
+      type: "object"
+      properties:
+        broUuid:
+          type: "string"
+        inviterUser:
+          $ref: "#/components/schemas/UserResponse"
+        targetUser:
+          $ref: "#/components/schemas/UserResponse"
+        state:
+          type: "string"
+      required:
+      - "broUuid"
+      - "inviterUser"
+      - "targetUser"
+      - "state"
+    BrosRequest:
+      type: "object"
+      properties:
+        broUuid:
+          type: "string"
+        inviterUserUuid:
+          type: "string"
+        targetUserUuid:
+          type: "string"
+        state:
+          type: "string"
+      required:
+      - "broUuid"
+      - "inviterUserUuid"
+      - "targetUserUuid"
+      - "state"
+    BroState:
+      type: "object"
+      properties:
+        state:
+          type: "string"
+    ContactInfoResponse:
+      type: "object"
+      properties:
+        contactInfoUuid:
+          type: "string"
+        user:
+          $ref: "#/components/schemas/UserResponse"
+        contactType:
+          type: "string"
+        uri:
+          type: "string"
+      required:
+      - "contactInfoUuid"
+      - "user"
+      - "contactType"
+      - "uri"
+    ContactInfoRequest:
+      type: "object"
+      properties:
+        contactInfoUuid:
+          type: "string"
+        userUuid:
+          type: "string"
+        contactType:
+          type: "string"
+        uri:
+          type: "string"
+      required:
+      - "contactInfoUuid"
+      - "userUuid"
+      - "contactType"
+      - "uri"
+    UserPreferenceResponse:
+      type: "object"
+      properties:
+        userPreferenceUuid:
+          type: "string"
+        user:
+          $ref: "#/components/schemas/UserResponse"
+        lateSleep:
+          type: "integer"
+          format: "int32"
+        nightGuest:
+          type: "integer"
+          format: "int32"
+        disturbedSleep:
+          type: "integer"
+          format: "int32"
+        muchStuff:
+          type: "integer"
+          format: "int32"
+        longTimeSpentInDorm:
+          type: "integer"
+          format: "int32"
+        annoyedByRubbish:
+          type: "integer"
+          format: "int32"
+        requiresFrequentCleaning:
+          type: "integer"
+          format: "int32"
+        lotOfFridgeSpace:
+          type: "integer"
+          format: "int32"
+        bigSizeObjects:
+          type: "integer"
+          format: "int32"
+        topOrBottomBed:
+          type: "integer"
+          format: "int32"
+        mansNotHot:
+          type: "integer"
+          format: "int32"
+        smokey:
+          type: "integer"
+          format: "int32"
+        drinky:
+          type: "integer"
+          format: "int32"
+      required:
+      - "userPreferenceUuid"
+      - "user"
+    UserPreferenceRequest:
+      type: "object"
+      properties:
+        userPreferenceUuid:
+          type: "string"
+        userUuid:
+          type: "string"
+        lateSleep:
+          type: "integer"
+          format: "int32"
+        nightGuest:
+          type: "integer"
+          format: "int32"
+        disturbedSleep:
+          type: "integer"
+          format: "int32"
+        muchStuff:
+          type: "integer"
+          format: "int32"
+        longTimeSpentInDorm:
+          type: "integer"
+          format: "int32"
+        annoyedByRubbish:
+          type: "integer"
+          format: "int32"
+        requiresFrequentCleaning:
+          type: "integer"
+          format: "int32"
+        lotOfFridgeSpace:
+          type: "integer"
+          format: "int32"
+        bigSizeObjects:
+          type: "integer"
+          format: "int32"
+        topOrBottomBed:
+          type: "integer"
+          format: "int32"
+        mansNotHot:
+          type: "integer"
+          format: "int32"
+        smokey:
+          type: "integer"
+          format: "int32"
+        drinky:
+          type: "integer"
+          format: "int32"
+      required:
+      - "userPreferenceUuid"
+      - "userUuid"
+    RoomRequest:
+      type: "object"
+      properties:
+        roomUUid:
+          type: "string"
+        roomNumber:
+          type: "integer"
+          format: "int32"
+        roomDescription:
+          type: "string"
+        hasLovers:
+          type: "boolean"
+        orientation:
+          type: "string"
+        nickname:
+          type: "string"
+        capacity:
+          type: "integer"
+          format: "int32"
+      required:
+      - "roomUUid"
+      - "roomNumber"
+      - "roomDescription"
+      - "hasLovers"
+      - "orientation"
+      - "nickname"
+      - "capacity"
+    UserReportRequest:
+      type: "object"
+      properties:
+        userReportUuid:
+          type: "string"
+        reporterUserUuid:
+          type: "string"
+        reportedUserUuid:
+          type: "string"
+        reason:
+          type: "string"
+        state:
+          type: "string"
+      required:
+      - "userReportUuid"
+      - "reporterUserUuid"
+      - "reportedUserUuid"
+      - "reason"
+      - "state"
+    UserRequest:
+      type: "object"
+      properties:
+        userUuid:
+          type: "string"
+        schacc:
+          type: "string"
+        name:
+          type: "string"
+        email:
+          type: "string"
+        roomUuid:
+          type: "string"
+        nickname:
+          type: "string"
+        profileDescription:
+          type: "string"
+        gender:
+          type: "string"
+        major:
+          type: "string"
+        wantsCoedRoom:
+          type: "boolean"
+      required:
+      - "userUuid"
+      - "schacc"
+      - "name"
+      - "email"
+      - "nickname"
+      - "profileDescription"
+      - "gender"
+      - "major"
+      - "wantsCoedRoom"
+    Map:
+      type: "object"
+      properties: {}
+    Map_String:
+      type: "string"

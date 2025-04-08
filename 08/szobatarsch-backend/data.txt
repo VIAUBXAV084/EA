@@ -1,0 +1,11 @@
+{
+  "roomNumber": 1510,
+  "roomDescription": "Lorem ipsum dolor sit amet",
+  "isCoedRoom": true,
+  "hasLovers": false,
+  "isQuiet": false,
+  "isSocial": false,
+  "orientation": "SOUTH_EAST",
+  "nickname": "",
+  "capacity": 4
+}

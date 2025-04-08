@@ -1,0 +1,33 @@
+version: "3"
+services:
+    DB-DEMO:
+        image: postgres:latest
+        volumes:
+            - ./data:/data/db
+        container_name: Szobatarsch-demo-db
+        env_file: .env
+        networks:
+            - shared
+            - public
+        ports:
+            -   5432:5432
+    api-demo:
+        ports:
+            -  6011:6011
+        build:
+            dockerfile: Dockerfile
+            context: .
+        container_name: Szobatarsch-demo-api
+        env_file: .env
+        networks:
+            - shared
+            - public
+        depends_on:
+            DB-DEMO:
+                condition: service_started
+
+networks:
+    shared:
+        internal: true
+    public:
+        driver: bridge

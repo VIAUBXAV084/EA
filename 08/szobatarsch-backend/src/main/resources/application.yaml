@@ -1,0 +1,6 @@
+ktor:
+    application:
+        modules:
+            - hu.bme.kszk.ApplicationKt.module
+    deployment:
+        port: 6011

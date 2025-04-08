@@ -1,0 +1,1 @@
+This file only exists to ensure the data folder doesn't get deleted.

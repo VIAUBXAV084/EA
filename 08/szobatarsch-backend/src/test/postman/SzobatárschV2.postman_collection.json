@@ -1,0 +1,1349 @@
+{
+	"info": {
+		"_postman_id": "e0d99f14-ee75-4fc4-a8c1-3109fc7c9277",
+		"name": "SzobatárschV2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30818673"
+	},
+	"item": [
+		{
+			"name": "Rooms",
+			"item": [
+				{
+					"name": "GetAllRooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{produrl}}/rooms",
+							"host": [
+								"{{produrl}}"
+							],
+							"path": [
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRoom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/rooms/90f9b9bc-774c-49e3-b9fe-ed0e60abc535",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rooms",
+								"90f9b9bc-774c-49e3-b9fe-ed0e60abc535"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateRoom",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"90f9b9bc-774c-49e3-b9fe-ed0e60abc535\",\r\n    \"roomNumber\": 1111,\r\n    \"roomDescription\": \"Lorem ipsum dolor sit amet\",\r\n    \"isCoedRoom\": true,\r\n    \"hasLovers\": false,\r\n    \"isQuiet\": false,\r\n    \"isSocial\": false,\r\n    \"orientation\": \"SOUTH_EAST\",\r\n    \"nickname\": \"\",\r\n    \"capacity\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rooms",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteRoom",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/rooms/dd0a2766-39a6-4aa8-a382-ec2ca2b1a6f0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rooms",
+								"dd0a2766-39a6-4aa8-a382-ec2ca2b1a6f0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewRoom",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"roomNumber\": 404,\r\n  \"roomDescription\": \"Lorem ipsum dolor sit amet\",\r\n  \"isCoedRoom\": true,\r\n  \"hasLovers\": false,\r\n  \"isQuiet\": false,\r\n  \"isSocial\": false,\r\n  \"orientation\": \"SOUTH_EAST\",\r\n  \"nickname\": \"\",\r\n  \"capacity\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rooms",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GetAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{produrl}}/users",
+							"host": [
+								"{{produrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/id/1a10fce8-1539-4a4d-a858-d30c83f3c2e2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"id",
+								"1a10fce8-1539-4a4d-a858-d30c83f3c2e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserBySchacc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/schacc/tester",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"schacc",
+								"tester"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserByBroState",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/bro/51921a51-0dd3-4468-a25d-5aa659160056",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"bro",
+								"51921a51-0dd3-4468-a25d-5aa659160056"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserByRoom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/room/40e46947-ed90-47c7-958a-93b22b2a716b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"room",
+								"40e46947-ed90-47c7-958a-93b22b2a716b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userUuid\": \"185e3195-8918-468f-8b31-228c28f6fc7a\",\r\n  \"schacc\": \"john.doe\",\r\n  \"name\": \"JAAAAAAAAAAAAAAA\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"roomUuid\": \"40e46947-ed90-47c7-958a-93b22b2a716b\",\r\n  \"nickname\": \"Johnny\",\r\n  \"profileDescription\": \"A software developer with a passion for open-source projects.\",\r\n  \"gender\": \"MALE\",\r\n  \"major\": \"VM\",\r\n  \"wantsCoedRoom\": true,\r\n  \"isMentor\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/e5e67142-c5f4-47b1-aa2a-19adb200eecf",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"e5e67142-c5f4-47b1-aa2a-19adb200eecf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"schacc\": \"CCC\",\r\n  \"name\": \"CCC\",\r\n  \"email\": \"CCC\",\r\n  \"nickname\": \"CCC\",\r\n  \"roomUuid\": null,\r\n  \"profileDescription\": \"A software developer with a passion for open-source projects.\",\r\n  \"gender\": \"MALE\",\r\n  \"major\": \"MI\",\r\n  \"wantsCoedRoom\": true,\r\n  \"isMentor\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ContactInfos",
+			"item": [
+				{
+					"name": "GetAllContactInfos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/contacts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetContactInfo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/contacts/id/0a0e4b6a-f35f-4884-8499-373f177962b6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts",
+								"id",
+								"0a0e4b6a-f35f-4884-8499-373f177962b6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetContactInfoByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/contacts/user/0a0e4b6a-f35f-4884-8499-373f177962b6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts",
+								"user",
+								"0a0e4b6a-f35f-4884-8499-373f177962b6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateContactInfo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"contactInfoUuid\": \"0a0e4b6a-f35f-4884-8499-373f177962b6\",\r\n  \"userUuid\": \"d8f14390-501b-4228-9aaf-220409392539\",\r\n  \"contactType\": \"MATRIX\",\r\n  \"uri\": \"Alma\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/contacts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteContactInfo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/contacts/13df586f-5fe1-4ba1-acd9-afeea3954919",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts",
+								"13df586f-5fe1-4ba1-acd9-afeea3954919"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewContactInfo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userUuid\": \"d8f14390-501b-4228-9aaf-220409392539\",\r\n  \"contactType\": \"TWITTER\",\r\n  \"uri\": \"GDXFHJLKÉOÁIÉULZKJFDHG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/contacts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admins",
+			"item": [
+				{
+					"name": "GetAllAdmins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admins",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAdmin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admins/id/8336938d-8a57-4850-91be-b99778700d5b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admins",
+								"id",
+								"8336938d-8a57-4850-91be-b99778700d5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAdminByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admins/name/John Doe",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admins",
+								"name",
+								"John Doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetIsAdminbyName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admins/isName/John Do",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admins",
+								"isName",
+								"John Do"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updatedmin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"adminUuid\": \"8336938d-8a57-4850-91be-b99778700d5b\",\r\n  \"userUuid\": \"4d64deae-0d4d-4a3d-a206-97058c4cf961\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admins",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletedmin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admins/e5e67142-c5f4-47b1-aa2a-19adb200eecf",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admins",
+								"e5e67142-c5f4-47b1-aa2a-19adb200eecf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userUuid\": \"4d64deae-0d4d-4a3d-a206-97058c4cf961\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/admins",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admins"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bros",
+			"item": [
+				{
+					"name": "GetAllBros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bros",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bros/d64688b0-4ddf-47ea-bfa6-5ca8461ade09",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bros",
+								"d64688b0-4ddf-47ea-bfa6-5ca8461ade09"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBroInviter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\": \"PENDING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bros/inviter/1a10fce8-1539-4a4d-a858-d30c83f3c2e2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bros",
+								"inviter",
+								"1a10fce8-1539-4a4d-a858-d30c83f3c2e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBroTarget",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bros/target/185e3195-8918-468f-8b31-228c28f6fc7a",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bros",
+								"target",
+								"185e3195-8918-468f-8b31-228c28f6fc7a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateBro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"broUuid\": \"d64688b0-4ddf-47ea-bfa6-5ca8461ade09\",\r\n    \"inviterUserUuid\": \"d8f14390-501b-4228-9aaf-220409392539\",\r\n    \"targetUserUuid\": \"88bf6a26-13e0-43ae-bcd4-935a008ce5e5\",\r\n    \"state\": \"ACCEPTED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bros",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteBro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bros/14211253-cf6d-4916-bfa7-f11325afdf76",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bros",
+								"14211253-cf6d-4916-bfa7-f11325afdf76"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewBro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"inviterUserUuid\": \"51921a51-0dd3-4468-a25d-5aa659160056\",\r\n  \"targetUserUuid\": \"9c0d0891-9557-4b3e-8952-9c78ee0a6cca\",\r\n  \"state\": \"ACCEPTED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bros",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bros"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserPreferences",
+			"item": [
+				{
+					"name": "GetAllUserPreferences",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/preferences",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"preferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserPreference",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/preferences/id/952ae137-b310-4de4-a4de-e0504042e6d6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"preferences",
+								"id",
+								"952ae137-b310-4de4-a4de-e0504042e6d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserPreferenceByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/preferences/user/952ae137-b310-4de4-a4de-e0504042e6d6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"preferences",
+								"user",
+								"952ae137-b310-4de4-a4de-e0504042e6d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserPreference",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userPreferenceUuid\": \"952ae137-b310-4de4-a4de-e0504042e6d6\",\r\n  \"userUuid\": \"788b6ab9-f6b8-4c79-8274-d36d0378055f\",\r\n  \"lateSleep\": null,\r\n  \"isSociable\": 4,\r\n  \"nightGuest\": 4,\r\n  \"disturbedSleep\": 4,\r\n  \"muchStuff\": 4,\r\n  \"longTimeSpentInDorm\": 4,\r\n  \"annoyedByRubbish\": 4,\r\n  \"requiresFrequentCleaning\": 4,\r\n  \"lotOfFridgeSpace\": 4,\r\n  \"bigSizeObjects\": 4,\r\n  \"topOrBottomBed\": 4,\r\n  \"mansNotHot\": 4,\r\n  \"smokey\": 4,\r\n  \"drinky\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/preferences",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"preferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserPreference",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/preferences/15623083-58b5-48a5-a68f-f0570349132b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"preferences",
+								"15623083-58b5-48a5-a68f-f0570349132b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewUserPreference",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userUuid\": \"788b6ab9-f6b8-4c79-8274-d36d0378055f\",\r\n  \"lateSleep\": null,\r\n  \"isSociable\": 4,\r\n  \"nightGuest\": 4,\r\n  \"disturbedSleep\": 4,\r\n  \"muchStuff\": 4,\r\n  \"longTimeSpentInDorm\": 4,\r\n  \"annoyedByRubbish\": 4,\r\n  \"requiresFrequentCleaning\": 4,\r\n  \"lotOfFridgeSpace\": 4,\r\n  \"bigSizeObjects\": 4,\r\n  \"topOrBottomBed\": 4,\r\n  \"mansNotHot\": 4,\r\n  \"smokey\": 4,\r\n  \"drinky\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/preferences",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"preferences"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserReports",
+			"item": [
+				{
+					"name": "GetAllUserReports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/userreports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userreports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetlUserReport",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/userreports/id/d53f4e37-61e9-4a60-9f1b-651db123c707",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userreports",
+								"id",
+								"d53f4e37-61e9-4a60-9f1b-651db123c707"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetlUserReportByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/userreports/user/1a10fce8-1539-4a4d-a858-d30c83f3c2e2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userreports",
+								"user",
+								"1a10fce8-1539-4a4d-a858-d30c83f3c2e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserReport",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userReportUuid\": \"d53f4e37-61e9-4a60-9f1b-651db123c707\",\r\n  \"reporterUserUuid\": \"788b6ab9-f6b8-4c79-8274-d36d0378055f\",\r\n  \"reportedUserUuid\": \"4d64deae-0d4d-4a3d-a206-97058c4cf961\",\r\n  \"reason\": \"Cigány\",\r\n  \"state\": \"ACCEPTED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userreports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userreports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserReport",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/room_reports/41bc9388-14dc-4c5b-90c5-056f0242235f",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"room_reports",
+								"41bc9388-14dc-4c5b-90c5-056f0242235f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewUserReport",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"reporterUserUuid\": \"788b6ab9-f6b8-4c79-8274-d36d0378055f\",\r\n  \"reportedUserUuid\": \"4d64deae-0d4d-4a3d-a206-97058c4cf961\",\r\n  \"reason\": \"Cigány\",\r\n  \"state\": \"PENDING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userreports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userreports"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RoomReports",
+			"item": [
+				{
+					"name": "GetAllRoomReports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{produrl}}/room_reports",
+							"host": [
+								"{{produrl}}"
+							],
+							"path": [
+								"room_reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRoomReport",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/room_reports/id/d53f4e37-61e9-4a60-9f1b-651db123c707",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"room_reports",
+								"id",
+								"d53f4e37-61e9-4a60-9f1b-651db123c707"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserReportByRoom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/room_reports/room/1a10fce8-1539-4a4d-a858-d30c83f3c2e2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"room_reports",
+								"room",
+								"1a10fce8-1539-4a4d-a858-d30c83f3c2e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserReport",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"roomReportUuid\": \"bf195790-48a0-46bf-9e28-d15aad7530f9\",\r\n   \"roomUuid\": \"9e41baf8-10c4-42ce-a986-f038ff1e6764\",\r\n   \"reportingUserUuid\": \"ac3e39d5-7338-4cf6-b5b6-697b5f42e091\",\r\n   \"reason\": \"String\",\r\n   \"seenByAdmin\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{produrl}}/room_reports",
+							"host": [
+								"{{produrl}}"
+							],
+							"path": [
+								"room_reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserReport",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/room_reports/41bc9388-14dc-4c5b-90c5-056f0242235f",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"room_reports",
+								"41bc9388-14dc-4c5b-90c5-056f0242235f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewRoomReport",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"roomUuid\": \"9e41baf8-10c4-42ce-a986-f038ff1e6764\",\r\n   \"reportingUserUuid\": \"ac3e39d5-7338-4cf6-b5b6-697b5f42e091\",\r\n   \"reason\": \"String\",\r\n   \"seenByAdmin\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/room_reports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"room_reports"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BlockedUsers",
+			"item": [
+				{
+					"name": "GetAllBlockedUserss",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/blockedusers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"blockedusers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBlockedUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/blockedusers/id/55d4209c-4af2-4a76-8331-9672a6df3aee",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"blockedusers",
+								"id",
+								"55d4209c-4af2-4a76-8331-9672a6df3aee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBlockedUsersByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/blockedusers/user/55d4209c-4af2-4a76-8331-9672a6df3aee",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"blockedusers",
+								"user",
+								"55d4209c-4af2-4a76-8331-9672a6df3aee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetIsBlockedUsersByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/blockedusers/isBlocked/1a10fce8-1539-4a4d-a858-d30c83f3c2e2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"blockedusers",
+								"isBlocked",
+								"1a10fce8-1539-4a4d-a858-d30c83f3c2e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateBlockedUsers",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"blockedUserUuid\": \"f4011d3d-5162-4bf7-8f86-7d0f3dd95def\",\r\n    \"userUuid\": \"4d64deae-0d4d-4a3d-a206-97058c4cf961\",\r\n    \"reportUuid\": \"d53f4e37-61e9-4a60-9f1b-651db123c707\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/blockedusers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"blockedusers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteBlockedUsers",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/blockedusers/f4011d3d-5162-4bf7-8f86-7d0f3dd95def",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"blockedusers",
+								"f4011d3d-5162-4bf7-8f86-7d0f3dd95def"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewBlockedUsers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userUuid\": \"788b6ab9-f6b8-4c79-8274-d36d0378055f\",\r\n    \"reportUuid\": \"d53f4e37-61e9-4a60-9f1b-651db123c707\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/blockedusers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"blockedusers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usecases",
+			"item": [
+				{
+					"name": "Broing",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Discover",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "OwnRoom",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:6011"
+		},
+		{
+			"key": "produrl",
+			"value": "https://szobatarsch.kszk.bme.hu/api/v1",
+			"type": "string"
+		}
+	]
+}
